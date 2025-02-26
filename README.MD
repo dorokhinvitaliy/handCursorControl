@@ -5,13 +5,13 @@
 
 ## Установка
 
-### Клонирование репозитория 
+### Клонирование репозитория
 
 ```
 git clone https://git.miem.hse.ru/ps-biv24x/vadorokhin.git
 ```
 
-### Переход в директорию
+### Переход в директорию 
 
 ```
 cd handCursorControl
