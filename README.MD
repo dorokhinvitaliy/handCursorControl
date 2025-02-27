@@ -8,7 +8,7 @@
 ### Клонирование репозитория
 
 ```
-git clone https://git.miem.hse.ru/blank8190307/handCursorControl.git
+git clone https://git.miem.hse.ru/ps-biv24x/vadorokhin.git
 ```
 
 ### Переход в директорию 
