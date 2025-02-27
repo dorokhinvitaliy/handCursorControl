@@ -40,7 +40,7 @@
 ## Запуск программы
 
 ```bash
-python hand_cursor_control.py
+python handCursorControl.py
 ```
 
 ## Управление
