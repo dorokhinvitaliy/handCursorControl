@@ -17,7 +17,7 @@
 
 2. **Склонируйте репозиторий или скачайте код:**
    ```bash
-   git clone https://github.com/yourusername/hand_cursor_control.git
+   git clone https://git.miem.hse.ru/blank8190307/handCursorControl.git
    cd handCursorControl
    ```
 
@@ -40,7 +40,7 @@
 ## Запуск программы
 
 ```bash
-python hand_cursor_control.py
+python handCursorControl.py
 ```
 
 ## Управление
