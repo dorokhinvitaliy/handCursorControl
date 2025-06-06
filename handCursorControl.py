@@ -61,11 +61,21 @@ while cap.isOpened():
                 dist_index_middle < three_fingers_threshold):
                 if (current_time - last_click_time) > click_cooldown:
                     pyautogui.rightClick()
+
+                    click_time = time.time()
+                    print("Клик:", click_time)
+                    print("Задержка:", (click_time - gesture_time) * 1000, "мс")
+
                     last_click_time = current_time
             # Левый клик (одиночное сведение большого и указательного)
             elif dist_thumb_index < click_threshold:
                 if (current_time - last_click_time) > click_cooldown:
                     pyautogui.click()
+
+                    click_time = time.time()
+                    print("Клик:", click_time)
+                    print("Задержка:", (click_time - gesture_time) * 1000, "мс")
+
                     last_click_time = current_time
             else:
                 pyautogui.moveTo(index_x, index_y)
@@ -99,7 +109,7 @@ while cap.isOpened():
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-if errors: print(errors)
+if errors: print("Средняя ошибка: ", sum(errors)/len(errors))
 
 cap.release()
 cv2.destroyAllWindows()
