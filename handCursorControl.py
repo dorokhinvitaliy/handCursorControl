@@ -60,6 +60,9 @@ while cap.isOpened():
                 dist_thumb_middle < three_fingers_threshold and
                 dist_index_middle < three_fingers_threshold):
                 if (current_time - last_click_time) > click_cooldown:
+                    gesture_time = time.time()
+                    print("Жест:", gesture_time)
+
                     pyautogui.rightClick()
 
                     click_time = time.time()
@@ -70,6 +73,9 @@ while cap.isOpened():
             # Левый клик (одиночное сведение большого и указательного)
             elif dist_thumb_index < click_threshold:
                 if (current_time - last_click_time) > click_cooldown:
+                    gesture_time = time.time()
+                    print("Жест:", gesture_time)
+
                     pyautogui.click()
 
                     click_time = time.time()
