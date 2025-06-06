@@ -17,6 +17,8 @@ click_cooldown = 1  # секунд между кликами
 
 last_click_time = 0
 
+prev_time = 0
+
 def get_landmark_px(landmark, frame_width, frame_height):
     return int(landmark.x * frame_width), int(landmark.y * frame_height)
 
@@ -79,6 +81,12 @@ while cap.isOpened():
             cv2.line(frame, (ix, iy), (rx, ry), (255, 0, 0), 2)
 
             mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+    curr_time = time.time()
+    fps = 1 / (curr_time - prev_time)
+    prev_time = curr_time
+
+    cv2.putText(frame, f'FPS: {int(fps)}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     cv2.imshow("Hand Tracking", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
