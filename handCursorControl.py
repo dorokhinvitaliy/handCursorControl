@@ -17,7 +17,8 @@ click_cooldown = 1  # секунд между кликами
 
 last_click_time = 0
 
-prev_time = 0
+prev_time = 0 # for cheching FPS
+errors = []
 
 def get_landmark_px(landmark, frame_width, frame_height):
     return int(landmark.x * frame_width), int(landmark.y * frame_height)
@@ -40,6 +41,10 @@ while cap.isOpened():
             ring_finger_tip = hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_TIP]
 
             index_x, index_y = get_landmark_px(index_finger_tip, screen_width, screen_height)
+
+            error = math.hypot(index_x - pyautogui.position().x, index_y - pyautogui.position().y)
+            errors.append(error)
+
 
             # Расстояния между пальцами
             dist_thumb_index = math.hypot(index_x - int(thumb_tip.x * screen_width), index_y - int(thumb_tip.y * screen_height))
@@ -88,9 +93,13 @@ while cap.isOpened():
 
     cv2.putText(frame, f'FPS: {int(fps)}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
+
+
     cv2.imshow("Hand Tracking", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+if errors: print(errors)
 
 cap.release()
 cv2.destroyAllWindows()
